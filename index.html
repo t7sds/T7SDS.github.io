@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Connect with T7SDS</title>
+  <title>Connect with Owner</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
   <style>
@@ -11,6 +11,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
+      scroll-behavior: smooth;
     }
     .title-font {
       font-family: 'Space Grotesk', sans-serif;
@@ -21,12 +22,19 @@
     }
 
     .contact-card {
-      transition: all 0.4s cubic-bezier(0.4, 0.0, 0.2, 1);
+      transition: all 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+      opacity: 0;
+      transform: translateY(40px);
     }
     
+    .contact-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .contact-card:hover {
-      transform: translateY(-10px);
-      background: rgba(255,255,255,0.08);
+      transform: translateY(-12px) scale(1.02);
+      background: rgba(255,255,255,0.09);
     }
 
     .icon-circle {
@@ -34,119 +42,126 @@
     }
     
     .contact-card:hover .icon-circle {
-      transform: scale(1.1) rotate(12deg);
-      box-shadow: 0 0 30px -5px currentColor;
+      transform: scale(1.15) rotate(15deg);
+      box-shadow: 0 0 35px -5px currentColor;
     }
 
-    .line {
-      height: 1px;
-      background: linear-gradient(to right, transparent, #a855f7, transparent);
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #18181b;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: linear-gradient(#a855f7, #ec4899);
+      border-radius: 20px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: linear-gradient(#c026d3, #db2777);
     }
   </style>
 </head>
-<body class="bg-black text-white min-h-screen hero-bg overflow-hidden">
+<body class="bg-black text-white min-h-screen hero-bg overflow-x-hidden">
 
-  <!-- Background subtle grid -->
+  <!-- Background Grid -->
   <div class="fixed inset-0 bg-[linear-gradient(to_right,#27272a_1px,transparent_1px),linear-gradient(to_bottom,#27272a_1px,transparent_1px)] bg-[size:50px_50px] opacity-20 z-0"></div>
 
-  <div class="relative z-10 min-h-screen flex items-center justify-center p-6">
-    <div class="max-w-md w-full">
+  <div class="relative z-10 min-h-screen flex flex-col items-center justify-center p-6 py-20">
 
-      <!-- Profile Header -->
-      <div class="text-center mb-16">
-        <div class="mx-auto w-28 h-28 bg-gradient-to-br from-purple-600 via-pink-500 to-violet-600 rounded-3xl flex items-center justify-center text-6xl shadow-2xl mb-6 border-4 border-white/10">
-          ℹ️
+    <!-- Profile Header -->
+    <div class="text-center mb-16">
+      <div class="mx-auto w-28 h-28 bg-gradient-to-br from-purple-600 via-pink-500 to-violet-600 rounded-3xl flex items-center justify-center text-6xl shadow-2xl mb-6 border-4 border-white/10">
+        👤
+      </div>
+      <h1 class="title-font text-5xl font-semibold tracking-tighter mb-2">T7SDS</h1>
+      <p class="text-purple-300 tracking-widest text-sm font-medium">OPEN TO CONNECT</p>
+      <div class="w-20 h-0.5 mx-auto mt-8 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+    </div>
+
+    <!-- Contact Cards -->
+    <div class="max-w-md w-full space-y-5" id="cards-container">
+
+      <!-- Email -->
+      <div onclick="copyToClipboard('it7sds@gmail.com')" 
+           class="contact-card bg-zinc-900/70 border border-zinc-700 hover:border-purple-500 rounded-3xl p-6 flex items-center gap-5 cursor-pointer group">
+        <div class="icon-circle w-12 h-12 bg-purple-500/10 text-purple-400 flex items-center justify-center text-3xl rounded-2xl">
+          ✉️
         </div>
-        <h1 class="title-font text-5xl font-semibold tracking-tighter mb-2">T7SDS</h1>
-        <p class="text-purple-300 tracking-widest text-sm font-medium">OPEN TO CONNECT</p>
-        
-        <div class="w-16 h-0.5 mx-auto mt-8 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
-      </div>
-
-      <!-- Contact Options -->
-      <div class="space-y-4">
-
-        <!-- Email -->
-        <div onclick="copyToClipboard('it7sds@gmail.com')" 
-             class="contact-card bg-zinc-900/70 border border-zinc-700 hover:border-purple-500 rounded-3xl p-6 flex items-center gap-5 cursor-pointer group">
-          <div class="icon-circle w-12 h-12 bg-purple-500/10 text-purple-400 flex items-center justify-center text-3xl rounded-2xl">
-            ✉️
-          </div>
-          <div class="flex-1">
-            <p class="text-xs uppercase tracking-widest text-zinc-400 group-hover:text-purple-400">Email</p>
-            <p class="text-lg font-medium">it7sds@gmail.com</p>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-zinc-400 group-hover:text-purple-400 text-xl"></i>
+        <div class="flex-1">
+          <p class="text-xs uppercase tracking-widest text-zinc-400 group-hover:text-purple-400">Email</p>
+          <p class="text-lg font-medium">it7sds@gmail.com</p>
         </div>
-
-        <!-- Telegram -->
-        <a href="https://t.me/imt7s" target="_blank"
-           class="contact-card bg-zinc-900/70 border border-zinc-700 hover:border-sky-400 rounded-3xl p-6 flex items-center gap-5 cursor-pointer group">
-          <div class="icon-circle w-12 h-12 bg-sky-500/10 text-sky-400 flex items-center justify-center text-3xl rounded-2xl">
-            <i class="fa-brands fa-telegram"></i>
-          </div>
-          <div class="flex-1">
-            <p class="text-xs uppercase tracking-widest text-zinc-400 group-hover:text-sky-400">Telegram</p>
-            <p class="text-lg font-medium">@imt7s</p>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-zinc-400 group-hover:text-sky-400 text-xl"></i>
-        </a>
-
-        <!-- Instagram -->
-        <a href="https://instagram.com/t7sds" target="_blank"
-           class="contact-card bg-zinc-900/70 border border-zinc-700 hover:border-pink-500 rounded-3xl p-6 flex items-center gap-5 cursor-pointer group">
-          <div class="icon-circle w-12 h-12 bg-pink-500/10 text-pink-400 flex items-center justify-center text-3xl rounded-2xl">
-            <i class="fa-brands fa-instagram"></i>
-          </div>
-          <div class="flex-1">
-            <p class="text-xs uppercase tracking-widest text-zinc-400 group-hover:text-pink-400">Instagram</p>
-            <p class="text-lg font-medium">@t7sds</p>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-zinc-400 group-hover:text-pink-400 text-xl"></i>
-        </a>
-
-        <!-- X -->
-        <a href="https://x.com/MyT7vrf" target="_blank"
-           class="contact-card bg-zinc-900/70 border border-zinc-700 hover:border-white rounded-3xl p-6 flex items-center gap-5 cursor-pointer group">
-          <div class="icon-circle w-12 h-12 bg-white/10 text-white flex items-center justify-center text-3xl rounded-2xl">
-            <i class="fa-brands fa-x-twitter"></i>
-          </div>
-          <div class="flex-1">
-            <p class="text-xs uppercase tracking-widest text-zinc-400 group-hover:text-white">X (Twitter)</p>
-            <p class="text-lg font-medium">@MyT7vrf</p>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-zinc-400 group-hover:text-white text-xl"></i>
-        </a>
-
-        <!-- GitHub -->
-        <a href="https://github.com/it7sds" target="_blank"
-           class="contact-card bg-zinc-900/70 border border-zinc-700 hover:border-emerald-500 rounded-3xl p-6 flex items-center gap-5 cursor-pointer group">
-          <div class="icon-circle w-12 h-12 bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-3xl rounded-2xl">
-            <i class="fa-brands fa-github"></i>
-          </div>
-          <div class="flex-1">
-            <p class="text-xs uppercase tracking-widest text-zinc-400 group-hover:text-emerald-400">GitHub</p>
-            <p class="text-lg font-medium">@it7sds</p>
-          </div>
-          <i class="fa-solid fa-arrow-up-right-from-square text-zinc-400 group-hover:text-emerald-400 text-xl"></i>
-        </a>
-
+        <i class="fa-solid fa-arrow-up-right-from-square text-zinc-400 group-hover:text-purple-400 text-xl"></i>
       </div>
 
-      <div class="mt-12 text-center">
-        <p class="text-zinc-500 text-sm">Powered by CNI1- SPONSORACB™ ®2026</p>
-      </div>
+      <!-- Telegram -->
+      <a href="https://t.me/imt7s" target="_blank"
+         class="contact-card bg-zinc-900/70 border border-zinc-700 hover:border-sky-400 rounded-3xl p-6 flex items-center gap-5 cursor-pointer group">
+        <div class="icon-circle w-12 h-12 bg-sky-500/10 text-sky-400 flex items-center justify-center text-3xl rounded-2xl">
+          <i class="fa-brands fa-telegram"></i>
+        </div>
+        <div class="flex-1">
+          <p class="text-xs uppercase tracking-widest text-zinc-400 group-hover:text-sky-400">Telegram</p>
+          <p class="text-lg font-medium">@imt7s</p>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square text-zinc-400 group-hover:text-sky-400 text-xl"></i>
+      </a>
+
+      <!-- Instagram -->
+      <a href="https://instagram.com/t7sds" target="_blank"
+         class="contact-card bg-zinc-900/70 border border-zinc-700 hover:border-pink-500 rounded-3xl p-6 flex items-center gap-5 cursor-pointer group">
+        <div class="icon-circle w-12 h-12 bg-pink-500/10 text-pink-400 flex items-center justify-center text-3xl rounded-2xl">
+          <i class="fa-brands fa-instagram"></i>
+        </div>
+        <div class="flex-1">
+          <p class="text-xs uppercase tracking-widest text-zinc-400 group-hover:text-pink-400">Instagram</p>
+          <p class="text-lg font-medium">@t7sds</p>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square text-zinc-400 group-hover:text-pink-400 text-xl"></i>
+      </a>
+
+      <!-- X -->
+      <a href="https://x.com/MyT7vrf" target="_blank"
+         class="contact-card bg-zinc-900/70 border border-zinc-700 hover:border-white rounded-3xl p-6 flex items-center gap-5 cursor-pointer group">
+        <div class="icon-circle w-12 h-12 bg-white/10 text-white flex items-center justify-center text-3xl rounded-2xl">
+          <i class="fa-brands fa-x-twitter"></i>
+        </div>
+        <div class="flex-1">
+          <p class="text-xs uppercase tracking-widest text-zinc-400 group-hover:text-white">X (Twitter)</p>
+          <p class="text-lg font-medium">@MyT7vrf</p>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square text-zinc-400 group-hover:text-white text-xl"></i>
+      </a>
+
+      <!-- GitHub -->
+      <a href="https://github.com/it7sds" target="_blank"
+         class="contact-card bg-zinc-900/70 border border-zinc-700 hover:border-emerald-500 rounded-3xl p-6 flex items-center gap-5 cursor-pointer group">
+        <div class="icon-circle w-12 h-12 bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-3xl rounded-2xl">
+          <i class="fa-brands fa-github"></i>
+        </div>
+        <div class="flex-1">
+          <p class="text-xs uppercase tracking-widest text-zinc-400 group-hover:text-emerald-400">GitHub</p>
+          <p class="text-lg font-medium">@it7sds</p>
+        </div>
+        <i class="fa-solid fa-arrow-up-right-from-square text-zinc-400 group-hover:text-emerald-400 text-xl"></i>
+      </a>
+
+    </div>
+
+    <div class="mt-16 text-center text-zinc-500 text-sm">
+      Powerd By CNI1- SPONSORACB™ ®2026
     </div>
   </div>
 
   <!-- Toast -->
-  <div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900 border border-purple-500 text-purple-300 px-8 py-4 rounded-3xl flex items-center gap-3 z-50 shadow-xl">
+  <div id="toast" class="hidden fixed bottom-6 left-1/2 -translate-x-1/2 bg-zinc-900 border border-purple-500 text-purple-300 px-8 py-4 rounded-3xl flex items-center gap-3 z-50 shadow-2xl">
     <i class="fa-solid fa-check"></i>
     <span id="toast-text" class="font-medium"></span>
   </div>
 
   <script>
-    // Chrome Only
+    // Chrome Detection
     function isChrome() {
       return /Chrome/.test(navigator.userAgent) && /Google Inc/.test(navigator.vendor);
     }
@@ -155,6 +170,26 @@
       alert("💎 For the best experience, please open this page in Google Chrome.");
     }
 
+    // Scroll Animation with Intersection Observer
+    function animateOnScroll() {
+      const cards = document.querySelectorAll('.contact-card');
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, index) => {
+          if (entry.isIntersecting) {
+            setTimeout(() => {
+              entry.target.classList.add('visible');
+            }, index * 100); // Staggered animation
+          }
+        });
+      }, {
+        threshold: 0.3,
+        rootMargin: "0px 0px -50px 0px"
+      });
+
+      cards.forEach(card => observer.observe(card));
+    }
+
+    // Copy Email
     function copyToClipboard(text) {
       navigator.clipboard.writeText(text).then(() => {
         const toast = document.getElementById('toast');
@@ -168,6 +203,11 @@
         }, 2600);
       });
     }
+
+    // Initialize
+    window.onload = () => {
+      animateOnScroll();
+    };
   </script>
 </body>
 </html>
